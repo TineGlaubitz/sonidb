@@ -1,24 +1,20 @@
+import base64
+import datetime
+import hashlib
 import json
 import os
+import tempfile
+from pathlib import Path
 
 import requests
 import streamlit as st
-import os
-import requests
-import datetime
-import base64
-
-from pathlib import Path
-import json
-import tempfile
-import hashlib
 
 
 def push_file(
     content,
     repo_slug="TineGlaubitz/sonidb",
     user="TineGlaubitz",
-    token=os.environ.get("GITHUB_TOKEN"),
+    token=st.secrets["GH_TOKEN"],
 ):
     """
     Push file update to GitHub repo
